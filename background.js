@@ -11,6 +11,16 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
     return true;
   }
+  if (request.type === 'FOCUS_TAB' && request.url) {
+    browser.tabs.query({url: request.url}).then(tabs => {
+      if (tabs && tabs.length > 0) {
+        browser.tabs.update(tabs[0].id, {active: true});
+        browser.windows.update(tabs[0].windowId, {focused: true});
+      }
+      sendResponse({success: true});
+    });
+    return true;
+  }
   if (request.type === 'getHistory') {
     const days = request.days || 7;
     const endDate = new Date();

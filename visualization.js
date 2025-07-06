@@ -125,6 +125,12 @@ async function drawGraph(data) {
         link.attr('stroke', '#aaa').attr('stroke-width', 1.5);
         node.attr('fill', n => openTabSet.has((n.url || '').replace(/\/$/, '')) ? '#f4e542' : '#44aaff');
         tooltip.style('display', 'none');
+    })
+    .on('click', async function(event, d) {
+        const urlNorm = (d.url || '').replace(/\/$/, '');
+        if (openTabSet.has(urlNorm)) {
+            await browser.runtime.sendMessage({ type: 'FOCUS_TAB', url: d.url });
+        }
     });
 
     // Drag
