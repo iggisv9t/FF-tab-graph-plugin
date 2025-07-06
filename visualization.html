@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <title>History Graph Visualization</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        #controls { padding: 12px; background: #f6f6f6; border-bottom: 1px solid #ddd; }
-        #graph { width: 100vw; height: 80vh; border-bottom: 1px solid #ddd; }
-        #debugTable { width: 100vw; max-height: 20vh; overflow-y: auto; font-size: 12px; }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        #controls {
+            padding: 12px;
+            background: #f6f6f6;
+            border-bottom: 1px solid #ddd;
+        }
+        #graph {
+            flex: 1 1 auto;
+            width: 100vw;
+            height: 100%;
+            display: block;
+            border-bottom: 1px solid #ddd;
+        }
         th, td { padding: 4px 8px; border: 1px solid #ccc; }
         th { background: #f0f0f0; }
         table { border-collapse: collapse; width: 100%; }
