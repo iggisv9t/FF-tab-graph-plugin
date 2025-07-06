@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Browser History Graph",
+  "version": "1.0",
+  "description": "Visualizes your browsing history as an interactive graph",
+  "permissions": [
+    "history",
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "action": {
+    "default_title": "Show History Graph"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["visualization.html", "visualization.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

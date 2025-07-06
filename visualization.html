@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>History Graph Visualization</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        #controls { padding: 12px; background: #f6f6f6; border-bottom: 1px solid #ddd; }
+        #graph { width: 100vw; height: 80vh; border-bottom: 1px solid #ddd; }
+        #debugTable { width: 100vw; max-height: 20vh; overflow-y: auto; font-size: 12px; }
+        th, td { padding: 4px 8px; border: 1px solid #ccc; }
+        th { background: #f0f0f0; }
+        table { border-collapse: collapse; width: 100%; }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <label>Days: <input type="number" id="daysInput" value="7" min="1" max="30"></label>
+        <button id="loadButton">Load History</button>
+        <button id="toggleLayout">Start/Stop Layout</button>
+    </div>
+    <svg id="graph"></svg>
+    <div>
+        <h3>Debug Table</h3>
+        <table id="debugTable">
+            <thead>
+                <tr><th>Source URL</th><th>Target URL</th><th>Visit ID</th></tr>
+            </thead>
+            <tbody id="edgesTableBody"></tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Last 10 Loaded History Entries</h3>
+        <table id="visitsTable">
+            <thead>
+                <tr><th>visitId</th><th>url</th><th>visitTime</th><th>referringVisitId</th></tr>
+            </thead>
+            <tbody id="visitsTableBody"></tbody>
+        </table>
+    </div>
+    <script src="d3.v7.min.js"></script>
+    <script src="visualization.js"></script>
+</body>
+</html>
