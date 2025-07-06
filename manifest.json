@@ -6,7 +6,8 @@
   "permissions": [
     "history",
     "storage",
-    "activeTab"
+    "activeTab",
+    "tabs"
   ],
   "background": {
     "scripts": ["background.js"]

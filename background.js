@@ -4,6 +4,13 @@ browser.action.onClicked.addListener(() => {
 });
 
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.type === 'GET_OPEN_TABS') {
+    browser.tabs.query({}).then(tabs => {
+      const urls = tabs.map(tab => tab.url);
+      sendResponse({urls});
+    });
+    return true;
+  }
   if (request.type === 'getHistory') {
     const days = request.days || 7;
     const endDate = new Date();
