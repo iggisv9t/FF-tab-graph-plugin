@@ -130,6 +130,8 @@ async function drawGraph(data) {
         const urlNorm = (d.url || '').replace(/\/$/, '');
         if (openTabSet.has(urlNorm)) {
             await browser.runtime.sendMessage({ type: 'FOCUS_TAB', url: d.url });
+        } else {
+            await browser.runtime.sendMessage({ type: 'OPEN_TAB', url: d.url });
         }
     });
 

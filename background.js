@@ -21,6 +21,12 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
     return true;
   }
+  if (request.type === 'OPEN_TAB' && request.url) {
+    browser.tabs.create({url: request.url}).then(() => {
+      sendResponse({success: true});
+    });
+    return true;
+  }
   if (request.type === 'getHistory') {
     const days = request.days || 7;
     const endDate = new Date();
