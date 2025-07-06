@@ -173,9 +173,22 @@ document.getElementById('loadButton').addEventListener('click', async () => {
     if (data.visits) updateVisitsTable(data.visits);
 });
 
+function updateLayoutIndicator() {
+    const dot = document.getElementById('layoutDot');
+    const status = document.getElementById('layoutStatusText');
+    if (isLayoutRunning) {
+        dot.style.background = '#28c940';
+        status.textContent = 'Layout Active';
+    } else {
+        dot.style.background = '#bbb';
+        status.textContent = 'Layout Disabled';
+    }
+}
+
 document.getElementById('toggleLayout').addEventListener('click', () => {
     if (!simulation) return;
     isLayoutRunning = !isLayoutRunning;
+    updateLayoutIndicator();
     if (isLayoutRunning) {
         simulation.alpha(0.5).restart();
     } else {
@@ -191,6 +204,7 @@ window.addEventListener('resize', () => {
 
 // Load initial graph on page load
 document.addEventListener('DOMContentLoaded', async () => {
+    updateLayoutIndicator();
     const days = parseInt(document.getElementById('daysInput').value);
     const data = await fetchHistory(days);
     drawGraph(data);

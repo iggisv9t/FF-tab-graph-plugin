@@ -38,6 +38,10 @@
         <label>Days: <input type="number" id="daysInput" value="7" min="1" max="30"></label>
         <button id="loadButton">Load History</button>
         <button id="toggleLayout">Start/Stop Layout</button>
+        <span id="layoutIndicator" style="margin-left:20px; font-weight:bold; vertical-align:middle;">
+            <span id="layoutDot" style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#28c940; margin-right:6px; vertical-align:middle;"></span>
+            <span id="layoutStatusText">Layout Active</span>
+        </span>
     </div>
     <svg id="graph"></svg>
     <!--
